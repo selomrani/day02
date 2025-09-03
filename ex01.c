@@ -3,6 +3,7 @@
 int main(void){
 
     int n1, n2, n3, n4,n5;
+    int size = sizeof(n1)+sizeof(n2)+sizeof(n3)+sizeof(n4)+sizeof(n5);
 
     printf("Enter ISBN : ");
     scanf("%d-%d-%d-%d-%d", &n1, &n2, &n3, &n4,&n5);
@@ -10,6 +11,12 @@ int main(void){
         printf("invalid, GS1 value must be either 978 or 979 ! \n");
         printf ("Please enter ISBN again : \n");
         scanf("%d-%d-%d-%d-%d", &n1, &n2, &n3, &n4,&n5);
+    }
+    while (size != 13 ) {
+        printf("ISBN must contain 13 digits \n");
+        printf("Please enter ISBN again : ");
+        scanf("%d-%d-%d-%d-%d", &n1, &n2, &n3, &n4,&n5);
+        
     }
     printf("Prefix of GS1 : %d \n",n1);
     printf("Groupe id : %d \n",n2);
