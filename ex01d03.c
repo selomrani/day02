@@ -2,32 +2,31 @@
 #include   <stdbool.h>
 
 int main(void) {
-    bool digit_seen[10] = {false};
+    int digit_count[10] = {0};
     int digit;
-    long n  ;
-    
+    long n;
 
     printf("Enter a number: ");
     scanf("%ld", &n);
 
-    while (n > 0) {
-        digit = n % 10;
-        if (digit_seen[digit])
-            break;
-        digit_seen[digit] = true;
-        n /= 10;
+    long temp = n;
+    while (temp > 0) {
+        digit = temp % 10;
+        digit_count[digit]++;
+        temp /= 10;
     }
+    bool repeated = false;
+    printf("Repeated digits: ");
     for (int i = 0; i < 10; i++) {
-        if (digit_seen[i]) {
+        if (digit_count[i] > 1) {
             printf("%d ", i);
+            repeated = true;
         }
     }
-  
-    if (n > 0) {
-        printf("Repeated digit\n",digit);
-    } else {
-        printf("No repeated digit\n");
+    if (!repeated) {
+        printf("None");
     }
+    printf("\n");
 
     return 0;
 }
